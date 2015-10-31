@@ -8,7 +8,7 @@ void setup() {
   
   //initialize walker objects with random seed
   for(int i=0; i < w.length; i++){
-   w[i] = new Walker(random(100));
+   w[i] = new Walker(random(1000),(random(width)),height/2);
   }
 
   background(255);
@@ -20,20 +20,22 @@ void draw () {
   
   //increment and display all walkers in array
     for(int i=0; i<numWalkers; i++){
-  w[i].step();
+
     w[i].display();
+      w[i].step();
   }
 
 }
 
 class Walker  {
-
-  float x, y;
-  float tx, ty;
-
+    float x,y;
+    float tx, ty;
+    
   //constructor
-  Walker(float i) {
-    float seed = i;
+  Walker(float s,float startX,float startY) {
+    float seed = s;
+    x =startX;
+    y =startY;
     tx = 1*seed;
     ty = 50*seed;
   }
